@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0n2jtna456l4"]
+[gd_scene load_steps=7 format=3 uid="uid://c0n2jtna456l4"]
 
 [ext_resource type="Texture2D" uid="uid://co0bh5cjy384j" path="res://assets/players/player_walk.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://bh55gy3ytwk3b" path="res://mario.gd" id="1_e2o6t"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_feb5d"]
 size = Vector2(2000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
+size = Vector2(50, 2000)
 
 [node name="Game" type="Node2D"]
 
@@ -34,10 +37,14 @@ position = Vector2(766, 500)
 shape = SubResource("RectangleShape2D_feb5d")
 
 [node name="TextureRect" type="TextureRect" parent="Ground"]
-visible = false
-offset_left = -1.0
-offset_top = 619.0
-offset_right = 1999.0
-offset_bottom = 747.0
+offset_top = 650.0
+offset_right = 2000.0
+offset_bottom = 778.0
 texture = ExtResource("1_feb5d")
 stretch_mode = 1
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(-100, 6)
+shape = SubResource("RectangleShape2D_fc0e3")
