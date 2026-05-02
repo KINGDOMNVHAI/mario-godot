@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 1200.0
+
+var has_key = false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -23,3 +24,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func get_key():
+	has_key = true
+
+	var icon = get_tree().current_scene.get_node("UI")
+	icon.visible = true
+	print(icon.visible)
