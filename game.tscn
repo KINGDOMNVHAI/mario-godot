@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0n2jtna456l4"]
+[gd_scene load_steps=17 format=3 uid="uid://c0n2jtna456l4"]
 
 [ext_resource type="Texture2D" uid="uid://co0bh5cjy384j" path="res://assets/players/player_walk.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://bh55gy3ytwk3b" path="res://mario.gd" id="1_e2o6t"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://mb01ne2xds2q" path="res://camera_2d.gd" id="4_ryrav"]
 [ext_resource type="Script" uid="uid://crd1s3p8t54d" path="res://key.gd" id="7_eow3j"]
 [ext_resource type="Texture2D" uid="uid://dx75domls7h88" path="res://assets/kenney/kenney_platformer-pack-redux/PNG/Items/keyYellow.png" id="7_j5wjh"]
+[ext_resource type="Script" uid="uid://dvfrvwrc1ky64" path="res://door.gd" id="8_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://c2xnxvdwu31fy" path="res://assets/backgrounds/doorClosed_mid.png" id="9_vef74"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7jktm"]
 texture = ExtResource("4_fc0e3")
@@ -1051,7 +1053,10 @@ size = Vector2(50, 2000)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eow3j"]
 size = Vector2(100, 100)
 
-[node name="Game" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vef74"]
+size = Vector2(5.75, 6.050001)
+
+[node name="Game1" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -1062,7 +1067,7 @@ offset_bottom = 1000.0
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ryrav")
 format = 2
-layer_0/tile_data = PackedInt32Array(2359308, 131072, 3, 2359395, 131072, 2, 2359299, 0, 0, 1835011, 0, 0, 1310723, 0, 0, 786435, 0, 0, 2883708, 0, 1, 2883716, 0, 1, 2883724, 0, 1, 2883732, 0, 1, 2883740, 0, 1, 2883748, 0, 1, 2883756, 0, 1, 2293897, 65536, 1, 2293896, 65536, 1, 2293895, 65536, 1, 2293894, 65536, 1, 2293893, 65536, 1, 2293892, 65536, 1)
+layer_0/tile_data = PackedInt32Array(2359308, 131072, 3, 2359395, 131072, 1, 2359299, 0, 0, 1835011, 0, 0, 1310723, 0, 0, 786435, 0, 0, 2883708, 0, 1, 2883716, 0, 1, 2883724, 0, 1, 2883732, 0, 1, 2883740, 0, 1, 2883748, 0, 1, 2883756, 0, 1, 2293897, 65536, 1, 2293896, 65536, 1, 2293895, 65536, 1, 2293894, 65536, 1, 2293893, 65536, 1, 2293892, 65536, 1, 2293859, 65536, 1, 2097248, 65536, 1, 2097249, 65536, 1, 2162785, 65536, 1, 2162786, 65536, 1, 2228322, 131072, 1, 2228323, 65536, 1, 2293860, 65536, 1, 2359397, 65536, 1, 2424934, 65536, 1, 2097250, 131072, 1, 2293858, 131072, 1, 2359394, 131072, 1, 2424931, 131072, 1, 2424932, 131072, 1)
 
 [node name="Mario" type="CharacterBody2D" parent="."]
 position = Vector2(217, 120)
@@ -1125,5 +1130,42 @@ offset_left = -128.0
 offset_bottom = 128.0
 grow_horizontal = 0
 texture = ExtResource("7_j5wjh")
+
+[node name="Door" type="Area2D" parent="."]
+position = Vector2(1649.285, 519.295)
+script = ExtResource("8_j5wjh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Door"]
+texture = ExtResource("9_vef74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
+position = Vector2(-2.7850342, -1.7949829)
+scale = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_vef74")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WinPopup" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = 126.0
+offset_top = 210.0
+offset_right = 1161.0
+offset_bottom = 429.0
+
+[node name="Label" type="Label" parent="CanvasLayer/WinPopup"]
+layout_mode = 0
+offset_left = 461.0
+offset_top = 100.0
+offset_right = 659.0
+offset_bottom = 173.0
+text = "Congratulations!"
+
+[node name="Next" type="Button" parent="CanvasLayer/WinPopup"]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 144.0
+offset_right = 619.0
+offset_bottom = 194.0
+text = "Next game"
 
 [connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]

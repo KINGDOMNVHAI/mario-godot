@@ -58,7 +58,7 @@ visible = false
 layout_mode = 2
 texture_normal = ExtResource("4_glbon")
 
-[node name="TextureButton" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+[node name="Exit" type="TextureButton" parent="CenterContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("5_nlkkf")
