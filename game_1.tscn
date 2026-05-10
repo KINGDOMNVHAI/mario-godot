@@ -1137,10 +1137,11 @@ position = Vector2(1649.285, 519.295)
 script = ExtResource("8_j5wjh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Door"]
+position = Vector2(2.7149658, 70.70502)
 texture = ExtResource("9_vef74")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door"]
-position = Vector2(-2.7850342, -1.7949829)
+position = Vector2(-0.28503442, 68.70501)
 scale = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_vef74")
 

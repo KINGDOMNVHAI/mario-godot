@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-const GRAVITY = 1200.0
+const JUMP_VELOCITY = -1200.0 # power of jump
+const GRAVITY = 3000.0
 
 var has_key = false
 
