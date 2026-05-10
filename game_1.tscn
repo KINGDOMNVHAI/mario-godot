@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0n2jtna456l4"]
+[gd_scene load_steps=18 format=3 uid="uid://dnekg2d1p7xru"]
 
 [ext_resource type="Texture2D" uid="uid://co0bh5cjy384j" path="res://assets/players/player_walk.png" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://bh55gy3ytwk3b" path="res://mario.gd" id="1_e2o6t"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dx75domls7h88" path="res://assets/kenney/kenney_platformer-pack-redux/PNG/Items/keyYellow.png" id="7_j5wjh"]
 [ext_resource type="Script" uid="uid://dvfrvwrc1ky64" path="res://door.gd" id="8_j5wjh"]
 [ext_resource type="Texture2D" uid="uid://c2xnxvdwu31fy" path="res://assets/backgrounds/doorClosed_mid.png" id="9_vef74"]
+[ext_resource type="Script" uid="uid://b5kl31txppjws" path="res://win_popup.gd" id="11_byquf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7jktm"]
 texture = ExtResource("4_fc0e3")
@@ -1151,6 +1152,7 @@ offset_left = 126.0
 offset_top = 210.0
 offset_right = 1161.0
 offset_bottom = 429.0
+script = ExtResource("11_byquf")
 
 [node name="Label" type="Label" parent="CanvasLayer/WinPopup"]
 layout_mode = 0
@@ -1169,3 +1171,4 @@ offset_bottom = 194.0
 text = "Next game"
 
 [connection signal="body_entered" from="Key" to="Key" method="_on_body_entered"]
+[connection signal="pressed" from="CanvasLayer/WinPopup/Next" to="CanvasLayer/WinPopup" method="_on_next_pressed"]

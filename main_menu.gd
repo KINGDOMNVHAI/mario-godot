@@ -7,7 +7,7 @@ func _ready():
 
 # Click start button
 func _on_start_pressed():
-	get_tree().change_scene_to_file("res://game.tscn")
+	get_tree().change_scene_to_file("res://game_1.tscn")
 
 # Click quit button
 func _on_quit_pressed():
